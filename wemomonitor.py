@@ -14,7 +14,7 @@ def write_to_file(name, insight_params, path):
     data = insight_params
     data['lastchange'] = int(data['lastchange'].strftime("%s"))
 
-    dir = time.strftime("%Y/%m/%d/%H/data.json")
+    dir = time.strftime("%Y/%m/%d/%H.%M.%S/data.json")
     fullpath = os.path.join(path, dir)
     try:
         os.makedirs(os.path.dirname(fullpath))
@@ -28,11 +28,12 @@ def write_to_file(name, insight_params, path):
         f.write(json_data)
 
 def mainloop(names, dir, times=5, delay=10):
-    env = Environment() # Environment(with_cache=False)
+    env = Environment(with_cache=False)
     env.start()
-    env.discover(6)
+    env.discover(10)
 
     for i in range(0, times):
+        print >>sys.stderr, "Run %d of %d" % (i, times)
         for name in names:
             try:
                 switch = env.get_switch(name)
