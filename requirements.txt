@@ -1,0 +1,7 @@
+future==0.16.0
+gevent==1.2.0
+greenlet==0.4.11
+ouimeaux==0.8
+PyYAML==3.12
+requests==2.12.4
+six==1.10.0
