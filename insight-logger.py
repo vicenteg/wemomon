@@ -50,7 +50,7 @@ def mainloop(names, dir, times=0, delay=10):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser("Insight Poller")
+    parser = argparse.ArgumentParser("insight-logger")
     parser.add_argument("--delay", type=int, default=10,
                         help="delay between device queries.")
     parser.add_argument("--times", type=int, default=0,
