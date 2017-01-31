@@ -59,13 +59,15 @@ if __name__ == "__main__":
                         help="delay between device queries.")
     parser.add_argument("--times", type=int, default=0,
                         help="number of times to query the device.")
+    parser.add_argument("--keyfile", type=str,
+                        help="keyfile for service account to authenticate with GCP")
     parser.add_argument("name", metavar="SWITCHNAME", nargs="+",
                         help="Names of the WeMo Insight switch(es)")
 
     args = parser.parse_args()
 
     try:
-        pubsub_client = pubsub.Client()
+        pubsub_client = pubsub.Client.from_service_account_json(args.keyfile)
     except Exception as exception:
         print >>sys.stderr, "Error getting a pubsub client, exiting."
         print >>sys.stderr, exception
