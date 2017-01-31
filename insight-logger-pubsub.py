@@ -69,7 +69,7 @@ if __name__ == "__main__":
     except Exception as exception:
         print >>sys.stderr, "Error getting a pubsub client, exiting."
         print >>sys.stderr, exception
-        sys.exit(1)
+        sys.exit(-1)
 
     try:
         mainloop(args.name, pubsub_client, times=args.times, delay=args.delay)
