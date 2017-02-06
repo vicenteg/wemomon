@@ -34,7 +34,7 @@ def publish_insight_data(topic, name, insight_params):
 def do(env, names, pubsub_client):
     for name in names:
         switch = env.get_switch(name)
-        topic = create_topic_if_needed(pubsub_client, "insight_{}".format(name))
+        topic = create_topic_if_needed(pubsub_client, "insight_switches")
         publish_insight_data(topic, name, switch.insight_params)
 
 
